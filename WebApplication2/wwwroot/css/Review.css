@@ -1,0 +1,49 @@
+﻿body {
+    background-color: #FFFFFF;
+}
+
+.container {
+    border-radius: 7px;
+    background: #e1e1e2;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 50px;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+.parent {
+    cursor: pointer;
+    color: white;
+
+}
+
+.child {
+    display: none; /* Start hidden */
+    height: 10px; /* Fixed height for child rows */
+    overflow: hidden; /* Prevent overflow */
+    background-color: #f9f9f9; /* Optional: Child row background color */
+}
+thead {
+  color:white; background-color:#800080;
+}
+/*.decorative-heading {
+    font-size: 32px;
+    font-weight: bold;
+    color: #800080;
+    justify-content:center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);*/
+    /*border-bottom: 2px solid #800080;*/
+    /*padding-bottom: 10px;
+    letter-spacing: 1px;
+    font-family: 'Arial', sans-serif;
+    transition: color 0.3s;
+}*/
+
+.decorative-heading {
+    width: fit-content; /* or a specific width like 200px */
+    margin: 0 auto; /* centers the element */
+    text-align: center; /* ensures text is centered within the heading */
+}

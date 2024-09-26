@@ -1,0 +1,66 @@
+﻿body {
+    background-color: #f8f9fa;
+}
+table {
+    border-radius: 0.5rem; /* Rounded corners for the table */
+    overflow: hidden; /* Clip the overflow to show rounded corners */
+    /*  background-color: #800080; */
+}
+
+th {
+    text-align: center; /* Center align header text */
+}
+
+td {
+    text-align: center; /* Center align body text */
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    background-color: #FFFFFF; /* Light lavender color */
+    border: 1px solid #ccc; /* Optional: border color */
+    border-radius: 4px; /* Optional: rounded corners */
+    padding: 5px; /* Optional: padding */
+    width: auto; /* Set width */
+}
+
+.dataTables_wrapper .dataTables_filter {
+    margin-bottom: 20px; /* Optional: space below the search box */
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1; /* Change background on hover */
+}
+
+.container {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 0.5rem; /* Rounded corners for the container */
+    padding: 20px; /* Padding inside the container */
+    background-color: #ffffff; /* White background for the container */
+}
+
+.icon-link {
+    text-decoration: none;
+    color: black; /* Default color */
+    transition: color 0.3s; /* Smooth transition */
+}
+
+    .icon-link:hover {
+        color: purple; /* Color on hover */
+    }
+
+.decorative-heading {
+    font-size: 32px; /* Increase font size */
+    font-weight: bold; /* Make text bold */
+    color: #800080; /* Purple color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+    border-bottom: 2px solid #800080; /* Underline with a border */
+    padding-bottom: 10px; /* Space between text and border */
+    letter-spacing: 1px; /* Add some space between letters */
+    font-family: 'Arial', sans-serif; /* Change the font family */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+    .decorative-heading:hover {
+        color: #5A005A; /* Dark purple on hover */
+    }
+

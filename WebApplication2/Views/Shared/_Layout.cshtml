@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApplication2</title>
+    <link rel="stylesheet" href="~/assets/css/backend-plugin.min.css">
+    <link rel="stylesheet" href="~/assets/css/backend-plugin.min.css">
+    <link rel="stylesheet" href="~/assets/css/backend.css?v=1.0.0">
+    <link rel="stylesheet" href="~/assets/vendor/@@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/remixicon/fonts/remixicon.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <!-- loader Start -->
+    <div id="loading">
+        <div id="loading-center">
+        </div>
+    </div>
+    <!-- loader END -->
+    <!-- Wrapper Start -->
+    <div class="wrapper">
+
+        <div class="iq-sidebar  sidebar-default ">
+            <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
+                <a href="../backend/index.html" class="header-logo">
+                    <img src="../assets/images/logo1.png" class="img-fluid rounded-normal" alt="logo"><h5 class="logo-title ml-3" style="color:#800080">DashBoard</h5>
+                </a>
+                <div class="iq-menu-bt-sidebar ml-0">
+                    <i class="las la-bars wrapper-menu"></i>
+                </div>
+            </div>
+            <div class="data-scrollbar" data-scroll="1">
+                <nav class="iq-sidebar-menu">
+                    <ul id="iq-sidebar-toggle" class="iq-menu">
+                        <li class="">
+                            <a href="@Url.Action("Index", "Index")">
+                                <i class="fas fa-home"></i> <span>Index</span>
+                            </a>
+                        </li>
+                    </ul>
+            <ul id="iq-sidebar-toggle" class="iq-menu">
+                        <li class="">
+                            <a href="@Url.Action("Index", "User")">
+                                <i class="fas fa-table"></i> <span>Data Table</span>
+                            </a>
+                        </li>
+                    </ul>  
+                </nav>
+                <div id="sidebar-bottom" class="position-relative sidebar-bottom">
+                    <div class="card border-none">
+                        <div class="card-body p-0">
+                            <div class="sidebarbottom-content">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-3"></div>
+            </div>
+        </div>    
+        <div class="iq-top-navbar">
+            <div class="iq-navbar-custom">
+                <nav class="navbar navbar-expand-lg navbar-light p-0">
+                    <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
+                        <i class="ri-menu-line wrapper-menu"></i>
+                        <a href="../backend/index.html" class="header-logo">
+                            <img src="../assets/images/logo1.png" class="img-fluid rounded-normal" alt="logo">
+                            <h5 class="logo-title ml-3" style="color:#800080">DashBoard</h5>
+                        </a>
+                    </div>
+                    <div class="iq-search-bar device-search">
+                        
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-label="Toggle navigation">
+                            <i class="ri-menu-3-line"></i> 
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto navbar-list align-items-center">
+                                
+                                <li class="nav-item nav-icon dropdown caption-content">
+                                    <a href="#" class="search-toggle dropdown-toggle" id="dropdownMenuButton4"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="~/assets/images/user/1.jpg" class="img-fluid rounded" alt="user">
+                                    </a>
+                                    <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <div class="card shadow-none m-0">
+                                            <div class="card-body p-0 text-center">
+                                                <div class="media-body profile-detail text-center">
+                                                    <img src="~/assets/images/page-img/profile-bg.png" alt="profile-bg"
+                                                         class="rounded-top img-fluid mb-4">
+                                                    <img src="~/assets/images/user/1.jpg" alt="profile-img"
+                                                         class="rounded profile-img img-fluid avatar-70">
+                                                </div>
+                                                <div class="p-3">
+                                                    <h5 class="mb-1">JoanDuo@property.com</h5>
+                                                    <p class="mb-0">Since 10 march, 2020</p>
+                                                    <div class="d-flex align-items-center justify-content-center mt-3">
+                                                        <a href="auth-sign-in.html" class="btn border">Sign Out</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+            
+        <div class="content-page">
+            <div class="container-fluid">
+                <div class="row">
+                    @RenderBody()
+                </div>
+                <!-- Page end  -->
+            </div>
+        </div>
+    </div><br/>
+    <!-- Wrapper End-->
+    <footer class="iq-footer">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item"><a href="~/backend/privacy-policy.html">Privacy Policy</a></li>
+                                <li class="list-inline-item"><a href="~/backend/terms-of-service.html">Terms of Use</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 text-right">
+                            <span class="mr-1"><script>document.write(new Date().getFullYear())</script>©</span> <a href="#" class="">DashBoard</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- Backend Bundle JavaScript -->
+    <script src="~/assets/js/backend-bundle.min.js"></script>
+
+    <!-- Table Treeview JavaScript -->
+    <script src="~/assets/js/table-treeview.js"></script>
+
+    <!-- Chart Custom JavaScript -->
+    <script src="~/assets/js/customizer.js"></script>
+
+    <!-- Chart Custom JavaScript -->
+    <script async src="~/assets/js/chart-custom.js"></script>
+
+    <!-- app JavaScript -->
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+            $('#loading').show();
+            $(window).on('beforeunload', function () {
+                $('#loading').show();
+            });
+            $(window).on('load', function () {
+                $('#loading').hide();
+            });
+        })
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
