@@ -27,7 +27,11 @@
                 @foreach (var group in Model.GroupBy(x => x.Type))
                 {
                     <tr style="background-color:#C0C0C0" class="parent" data-id="@group.Key">
-                        <td colspan="3">@group.Key</td>
+                        <td colspan="3">@group.Key
+                            <i class="fa fa-chevron-down toggle-icon" data-id="@group.Key"></i>
+
+                        </td>
+
                     </tr>
                     foreach (var item in group)
                     {
@@ -43,15 +47,31 @@
 
         </table>
     </div>
+    <style>
+      
+    /* Position the arrow in the right corner */
+    .toggle-icon {
+        float: right; /* Align the arrow to the right */
+        transition: transform 0.3s ease; /* Smooth animation for rotation */
+    }
+
+    /* Rotate the arrow for expand (up arrow) */
+    .rotate-up {
+        transform: rotate(180deg); /* Rotate by 180 degrees for the up arrow */
+    }
+</style>
     <script>
         $(document).ready(function () {
             $(".parent").click(function () {
                 var targetClass = $(this).data("id");
                 var children = $(".child-" + targetClass);
+                var icon = $(this).find(".toggle-icon"); 
                 if (children.is(":visible")) {
-                    children.fadeOut(30);  
+                    children.fadeOut(300);  
+                    icon.removeClass("rotate-up").addClass("fa-chevron-down");
                 } else {
-                    children.fadeIn(500);  
+                    children.fadeIn(500); 
+                    icon.addClass("rotate-up").removeClass("fa-chevron-up");
                 }
             });
             $(".decorative-heading").hide().slideDown(1000);
