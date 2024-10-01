@@ -7,13 +7,13 @@ namespace WebApplication2.Controllers
 {
     public class IndexController : Controller
     {
-        //string connStr = WebConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+        
         private readonly IConfiguration _configuration;
         public IndexController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
-        //string connectionString = _configuration.GetConnectionString("constr");
+       
 
         public IActionResult Index()
         {

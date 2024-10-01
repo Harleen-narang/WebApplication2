@@ -8,7 +8,6 @@ namespace WebApplication2.Controllers
 {
     public class UserController : Controller
     {
-        //string connStr = WebConfigurationManager.ConnectionStrings["constr"].ConnectionString;
         private readonly IConfiguration _configuration;
         public UserController(IConfiguration configuration)
         {
@@ -85,7 +84,7 @@ namespace WebApplication2.Controllers
                             chargingMode = reader["Charging"].ToString()
                         };
 
-                        // ASP.NET Core automatically serializes this as JSON
+                       
                         return Json(customerDetails);
                     }
                     return Json(null);
@@ -102,8 +101,8 @@ namespace WebApplication2.Controllers
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand("Get_Contacts", conn))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure; // Specify that this is a stored procedure
-                    cmd.Parameters.AddWithValue("@id", id); // Use parameterized query for user ID
+                    cmd.CommandType = CommandType.StoredProcedure; 
+                    cmd.Parameters.AddWithValue("@id", id); 
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -121,7 +120,7 @@ namespace WebApplication2.Controllers
                 }
             }
 
-            return Json(contacts); // Return the populated contacts list
+            return Json(contacts); 
         }
         #endregion
     }

@@ -45,19 +45,13 @@
     </div>
     <script>
         $(document).ready(function () {
-
-            // Toggle child rows with fade in and fade out effect
             $(".parent").click(function () {
                 var targetClass = $(this).data("id");
                 var children = $(".child-" + targetClass);
-
-                // Toggle child rows with fade in and fade out effect
                 if (children.is(":visible")) {
-                    // Fade out effect
-                    children.fadeOut(30);  // 300ms for smooth fade-out
+                    children.fadeOut(30);  
                 } else {
-                    // Fade in effect
-                    children.fadeIn(500);   // 300ms for smooth fade-in
+                    children.fadeIn(500);  
                 }
             });
             $(".decorative-heading").hide().slideDown(1000);
