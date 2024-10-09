@@ -35,7 +35,7 @@
                         </td>
                     </tr>
 
-                    <!-- Sub-sections (Documents, Commercial, Reviews) -->
+                   
                     <tr class="section-child child-@group.Key" style="display:none; background-color:#E0E0E0;">
                         <td colspan="3">
                             Documents
@@ -66,7 +66,7 @@
                                         </td>
                                         <td>Yes</td>
                                     </tr>
-                                    <!-- Add more rows here as needed -->
+                                    
                                 </tbody>
                             </table>
                         </td>
@@ -122,20 +122,20 @@
         </table>
     </div>
     <style>
-        /* Position the arrow in the right corner */
+       
         .toggle-icon {
-            float: right; /* Align the arrow to the right */
-            transition: transform 0.3s ease; /* Smooth animation for rotation */
+            float: right; 
+            transition: transform 0.3s ease; 
         }
 
-        /* Rotate the arrow for expand (up arrow) */
+       
         .rotate-up {
-            transform: rotate(180deg); /* Rotate by 180 degrees for the up arrow */
+            transform: rotate(180deg); 
         }
     </style>
     <script>
         $(document).ready(function () {
-            // Main parent row toggle
+            
             $(".parent").click(function () {
                 var targetClass = $(this).data("id");
                 var sections = $(".section-child.child-" + targetClass);
@@ -150,18 +150,18 @@
                 }
             });
 
-            // Sub-section rows toggle (e.g., Documents, Commercial, Reviews)
+            
             $(".section-child").click(function (event) {
-                event.stopPropagation(); // Prevent triggering parent toggle
+                event.stopPropagation(); 
                 var icon = $(this).find(".toggle-icon");
 
-                // Get the target class based on the toggle icon data-id
+                
                 var targetClass = icon.data("id");
 
-                // Select the corresponding child rows based on the target class
+               
                 var children = $(".child-" + targetClass);
 
-                // Toggle the visibility of the corresponding child rows
+               
                 if (children.is(":visible")) {
                     children.fadeOut(300);
                     icon.removeClass("rotate-up").addClass("fa-chevron-down");
