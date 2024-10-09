@@ -4,9 +4,10 @@
 <html>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-    <link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-
+    <script src="~/js/datatables.js"></script>
+    @* <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> *@
+    @* <link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet" /> *@
+    <link href="~/css/datatables.css" rel="stylesheet" />
     <link href="~/css/Review.css" rel="stylesheet" />
 </head>
 <body>
@@ -26,54 +27,150 @@
             <tbody>
                 @foreach (var group in Model.GroupBy(x => x.Type))
                 {
+                    <!-- Main Group -->
                     <tr style="background-color:#C0C0C0" class="parent" data-id="@group.Key">
-                        <td colspan="3">@group.Key
+                        <td colspan="3">
+                            @group.Key
                             <i class="fa fa-chevron-down toggle-icon" data-id="@group.Key"></i>
-
                         </td>
-
                     </tr>
-                    foreach (var item in group)
-                    {
-                        <tr class="child child-@group.Key" style="display:none;">
-                            <!-- Start hidden -->
-                            <td></td>
-                            <td>@item.CustomerName</td>
-                            <td>@item.Review</td>
-                        </tr>
-                    }
+
+                    <!-- Sub-sections (Documents, Commercial, Reviews) -->
+                    <tr class="section-child child-@group.Key" style="display:none; background-color:#E0E0E0;">
+                        <td colspan="3">
+                            Documents
+                            <i class="fa fa-chevron-down toggle-icon" data-id="documents-@group.Key"></i>
+                        </td>
+                    </tr>
+                    <tr class="child-documents-@group.Key" style="display:none;">
+                        <td colspan="3">
+                            <table class="table table-bordered table-striped">
+                                <thead style="background-color: #f8f9fa; color: #212529;">
+                                    <tr>
+                                        <th>Sr No</th>
+                                        <th>Proof Type</th>
+                                        <th>Value</th>
+                                        <th>File Name</th>
+                                        <th>Deviation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>PAN No</td>
+                                        <td>AHGH6767</td>
+                                        <td>
+                                            <a href="#" class="icon-link zoom-out">
+                                                <i class="fas fa-eye"></i>&nbsp; File Name
+                                            </a>
+                                        </td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <!-- Add more rows here as needed -->
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class="section-child child-@group.Key" style="display:none; background-color:#E0E0E0;">
+                        <td colspan="3">
+                            Commercial
+                            <i class="fa fa-chevron-down toggle-icon" data-id="commercial-@group.Key"></i>
+                        </td>
+                    </tr>
+                     <tr class="child-commercial-@group.Key" style="display:none;">
+                        <td colspan="3">
+                            Commercial data
+                            </td>
+                      </tr>
+                    <tr class="section-child child-@group.Key" style="display:none; background-color:#E0E0E0;">
+                        <td colspan="3">
+                            Reviews
+                            <i class="fa fa-chevron-down toggle-icon" data-id="reviews-@group.Key"></i>
+                        </td>
+                    </tr>
+                    <tr class="child-reviews-@group.Key" style="display:none;">
+                        <td colspan="3">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead style="background-color: #f8f9fa; color: #212529;">
+                                    <tr>
+                                        <th class="col-md-2">Remarks</th>
+                                        <th class="col-md-2">Submitted By</th>
+                                        <th class="col-md-2">Routed To</th>
+                                        <th class="col-md-2">Processed By</th>
+                                        <th class="col-md-2">Workflow</th>
+                                        <th class="col-md-2">Submitted Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in group)
+                                    {
+                                        <tr class="child-reviews-@group.Key">
+                                            <td>@item.Review</td>
+                                            <td>@item.CustomerName</td>
+                                            <td><!-- Add Routed To --></td>
+                                            <td><!-- Add Processed By --></td>
+                                            <td><!-- Add Workflow --></td>
+                                            <td><!-- Add Submitted Date --></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
                 }
             </tbody>
-
         </table>
     </div>
     <style>
-      
-    /* Position the arrow in the right corner */
-    .toggle-icon {
-        float: right; /* Align the arrow to the right */
-        transition: transform 0.3s ease; /* Smooth animation for rotation */
-    }
+        /* Position the arrow in the right corner */
+        .toggle-icon {
+            float: right; /* Align the arrow to the right */
+            transition: transform 0.3s ease; /* Smooth animation for rotation */
+        }
 
-    /* Rotate the arrow for expand (up arrow) */
-    .rotate-up {
-        transform: rotate(180deg); /* Rotate by 180 degrees for the up arrow */
-    }
-</style>
+        /* Rotate the arrow for expand (up arrow) */
+        .rotate-up {
+            transform: rotate(180deg); /* Rotate by 180 degrees for the up arrow */
+        }
+    </style>
     <script>
         $(document).ready(function () {
+            // Main parent row toggle
             $(".parent").click(function () {
                 var targetClass = $(this).data("id");
-                var children = $(".child-" + targetClass);
-                var icon = $(this).find(".toggle-icon"); 
-                if (children.is(":visible")) {
-                    children.fadeOut(300);  
-                    icon.removeClass("rotate-up").addClass("fa-chevron-down");
+                var sections = $(".section-child.child-" + targetClass);
+                var icon = $(this).find(".toggle-icon");
+
+                if (sections.is(":visible")) {
+                    sections.fadeOut(300);
+                    icon.removeClass("rotate-up").addClass("fa-chevron-up");
                 } else {
-                    children.fadeIn(500); 
-                    icon.addClass("rotate-up").removeClass("fa-chevron-up");
+                    sections.fadeIn(500);
+                    icon.addClass("rotate-up").removeClass("fa-chevron-down");
                 }
             });
+
+            // Sub-section rows toggle (e.g., Documents, Commercial, Reviews)
+            $(".section-child").click(function (event) {
+                event.stopPropagation(); // Prevent triggering parent toggle
+                var icon = $(this).find(".toggle-icon");
+
+                // Get the target class based on the toggle icon data-id
+                var targetClass = icon.data("id");
+
+                // Select the corresponding child rows based on the target class
+                var children = $(".child-" + targetClass);
+
+                // Toggle the visibility of the corresponding child rows
+                if (children.is(":visible")) {
+                    children.fadeOut(300);
+                    icon.removeClass("rotate-up").addClass("fa-chevron-down");
+                } else {
+                    children.fadeIn(500);
+                    icon.addClass("rotate-up").removeClass("fa-chevron-down");
+                }
+            });
+
             $(".decorative-heading").hide().slideDown(1000);
         });
     </script>
